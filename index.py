@@ -339,7 +339,7 @@ def server_push(sckey, desp):
     "desp": "打卡成功"
     }
     for _ in range(3):
-        res = requests.post(send_url1, data=data1)
+        res = requests.post("https://pushbear.ftqq.com/sub?sendkey=your-sendkey&text={健康打卡}&desp={打卡成功}".format("健康成功","保持健康"))
         try:
             if not res.json()['errno']:
                 logging.info('Server酱推送服务成功')
