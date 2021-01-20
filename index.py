@@ -331,16 +331,15 @@ def server_push(sckey, desp):
                 break
         except:
             logging.warning("Server酱不起作用了，可能是你的sckey出现了问题也可能服务器波动了，正在重试......")
-    # 自己测试用
-    
-    send_url1 = f"https://pushbear.ftqq.com/sub"
+    # 自己测试用  
+    send_url1 ="https://pushbear.ftqq.com/sub"
     data1={
     "sendkey": "21509-5dafa369f80dd88ace1c2f923bc78e41",
     "text": "健康打卡",
     "desp": "打卡成功"
     }
     for _ in range(3):
-        res = requests.post(send_url1, data=params)
+        res = requests.post(send_url1, data=data1)
         try:
             if not res.json()['errno']:
                 logging.info('Server酱推送服务成功')
