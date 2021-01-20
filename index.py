@@ -331,24 +331,6 @@ def server_push(sckey, desp):
                 break
         except:
             logging.warning("Server酱不起作用了，可能是你的sckey出现了问题也可能服务器波动了，正在重试......")
-    # 自己测试用  
-    send_url1 ="https://pushbear.ftqq.com/sub"
-    data1={
-    "sendkey": "21509-5dafa369f80dd88ace1c2f923bc78e41",
-    "text": "健康打卡",
-    "desp": "打卡成功"
-    }
-    for _ in range(3):
-        res = requests.post("https://pushbear.ftqq.com/sub?sendkey=your-sendkey&text={健康打卡}&desp={打卡成功}".format("健康成功","保持健康"))
-        try:
-            if not res.json()['errno']:
-                logging.info('Server酱推送服务成功')
-                break
-            else:
-                logging.warning('Server酱推送服务失败')
-                break
-        except:
-            logging.warning("Server酱不起作用了，可能是你的sckey出现了问题也可能服务器波动了，正在重试......")
     
 
 def get_custom_id(token):
