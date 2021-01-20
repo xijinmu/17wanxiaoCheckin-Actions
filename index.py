@@ -313,13 +313,14 @@ def server_push(sckey, desp):
     :param desp: 需要推送的内容
     :return:
     """
-    send_url = f"https://sc.ftqq.com/{sckey}.send"
+    # send_url = f"https://sc.ftqq.com/{sckey}.send"
+    send_url = f"https://pushbear.ftqq.com/sub.send"
     params = {
         "text": "健康打卡推送通知",
         "desp": desp
     }
     # 发送消息
-    for _ in range(3):
+    for _ in range(1):
         res = requests.post(send_url, data=params)
         try:
             if not res.json()['errno']:
