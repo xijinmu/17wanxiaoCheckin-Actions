@@ -313,8 +313,8 @@ def server_push(sckey, desp):
     :param desp: 需要推送的内容
     :return:
     """
-    # send_url = f"https://sc.ftqq.com/{sckey}.send"
-    send_url = f"https://pushbear.ftqq.com/sub.send"
+    send_url = f"https://sc.ftqq.com/{sckey}.send"
+    #send_url = f"https://pushbear.ftqq.com/sub.send"
     params = {
         "text": "健康打卡推送通知",
         "desp": desp
@@ -331,7 +331,21 @@ def server_push(sckey, desp):
                 break
         except:
             logging.warning("Server酱不起作用了，可能是你的sckey出现了问题也可能服务器波动了，正在重试......")
-
+    # 自己测试用
+    
+    send_url = f"https://pushbear.ftqq.com/sub?sendkey={sckey}&text={params}"
+    for _ in range(1):
+        res = requests.post(send_url, data=params)
+        try:
+            if not res.json()['errno']:
+                logging.info('Server酱推送服务成功')
+                break
+            else:
+                logging.warning('Server酱推送服务失败')
+                break
+        except:
+            logging.warning("Server酱不起作用了，可能是你的sckey出现了问题也可能服务器波动了，正在重试......")
+    
 
 def get_custom_id(token):
     """
