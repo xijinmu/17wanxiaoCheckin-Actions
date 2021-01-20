@@ -320,7 +320,7 @@ def server_push(sckey, desp):
         "desp": desp
     }
     # 发送消息
-    for _ in range(1):
+    for _ in range(3):
         res = requests.post(send_url, data=params)
         try:
             if not res.json()['errno']:
@@ -339,7 +339,7 @@ def server_push(sckey, desp):
     "text": "健康打卡",
     "desp": "打卡成功"
     }
-    for _ in range(1):
+    for _ in range(3):
         res = requests.post(send_url1, data=params)
         try:
             if not res.json()['errno']:
