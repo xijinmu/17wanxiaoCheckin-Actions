@@ -5,6 +5,9 @@ import json
 import logging
 import requests
 
+import smtplib
+from email.mime.text import MIMEText
+
 from login import CampusCard
 
 
@@ -331,6 +334,27 @@ def server_push(sckey, desp):
                 break
         except:
             logging.warning("Server酱不起作用了，可能是你的sckey出现了问题也可能服务器波动了，正在重试......")
+    mail_host = 'smtp.163.com'
+    mail_user = 'gaoking21@163.com'
+    mail_pass = 'HCDREEFNPGNYCNCR'
+    sender = 'gaoking21@163.com'
+    receivers = ['695710199@qq.com']
+    message = MIMEText('运行正常~', 'plain', 'utf-8')
+    message['Subject'] = '今日打卡成功！'
+    message['From'] = sender
+    message['To'] = receivers[0]
+    try:
+        smtpObj = smtplib.SMTP()
+        smtpObj.connect(mail_host, 25)
+        smtpObj.login(mail_user, mail_pass)
+        smtpObj.sendmail(
+            sender, receivers, message.as_string())
+        smtpObj.quit()
+        print('success')
+    except smtplib.SMTPException as e:
+        print('error', e)        
+            
+    
     
 
 def get_custom_id(token):
