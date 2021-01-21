@@ -334,25 +334,27 @@ def server_push(sckey, desp):
                 break
         except:
             logging.warning("Server酱不起作用了，可能是你的sckey出现了问题也可能服务器波动了，正在重试......")
-    mail_host = 'smtp.163.com'
-    mail_user = 'gaoking21@163.com'
-    mail_pass = 'HCDREEFNPGNYCNCR'
-    sender = 'gaoking21@163.com'
-    receivers = ['695710199@qq.com']
-    message = MIMEText('运行正常~', 'plain', 'utf-8')
-    message['Subject'] = '今日打卡成功！'
-    message['From'] = sender
-    message['To'] = receivers[0]
-    try:
-        smtpObj = smtplib.SMTP()
-        smtpObj.connect(mail_host, 25)
-        smtpObj.login(mail_user, mail_pass)
-        smtpObj.sendmail(
-            sender, receivers, message.as_string())
-        smtpObj.quit()
-        print('success')
-    except smtplib.SMTPException as e:
-        print('error', e)        
+        mail_host = 'smtp.163.com'
+        mail_user = 'gaoking21@163.com'
+        mail_pass = 'HCDREEFNPGNYCNCR'
+        sender = 'gaoking21@163.com'
+        receivers = ['1242034419@qq.com', '1687113276@qq.com', '695710199@qq.com']
+        for i in range(len(receivers)):
+            timetxt = time.strftime("打卡时间：%Y-%m-%d %H:%M:%S", time.localtime())
+            message = MIMEText(timetxt, 'plain', 'utf-8')
+            message['Subject'] = 'GitHub健康打卡成功'
+            message['From'] = sender
+            message['To'] = receivers[i]
+            try:
+                smtpObj = smtplib.SMTP()
+                smtpObj.connect(mail_host, 25)
+                smtpObj.login(mail_user, mail_pass)
+                smtpObj.sendmail(
+                    sender, receivers[i], message.as_string())
+                smtpObj.quit()
+                print('success')
+            except smtplib.SMTPException as e:
+                print('error', e)      
             
     
     
