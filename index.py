@@ -338,7 +338,7 @@ def server_push(sckey, desp):
         mail_user = 'gaoking21@163.com'
         mail_pass = 'HCDREEFNPGNYCNCR'
         sender = 'gaoking21@163.com'
-        receivers = ['1242034419@qq.com', '1687113276@qq.com', '695710199@qq.com']
+        receivers = ['1242034419@qq.com', '695710199@qq.com']
         for i in range(len(receivers)):
             timetxt = time.strftime("打卡时间：%Y-%m-%d %H:%M:%S", time.localtime())
             message = MIMEText(timetxt, 'plain', 'utf-8')
